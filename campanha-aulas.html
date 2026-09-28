@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campanha de Vendas: Sua Melhor Versão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { font-family:'Work Sans', system-ui, sans-serif; background:#ffffff; color:#1a1a1a; }
+  a { text-decoration:none; }
+  .headf { font-family:'Sora', system-ui, sans-serif; }
+
+  /* ---------- HERO (preto): só o player ---------- */
+  .hero { background:#0d0d0d; padding:32px 20px; display:flex; justify-content:center; }
+  .player-wrap { width:100%; max-width:720px; aspect-ratio:16/9; border-radius:10px; overflow:hidden; background:#000; }
+  .player-wrap iframe { width:100%; height:100%; border:0; display:block; }
+
+  /* ---------- LISTA DE AULAS (branco) ---------- */
+  .aulas { padding:44px 20px 56px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .aulas-inner { width:100%; max-width:600px; display:flex; flex-direction:column; gap:12px; }
+  .aulas-title { margin:0 0 6px; font-size:20px; font-weight:800; color:#0d0d0d; text-align:center; text-transform:uppercase; }
+
+  .lesson {
+    display:flex; align-items:center; gap:14px; width:100%;
+    padding:16px 18px; border:1px solid #e5e5e5; border-radius:12px; background:#ffffff;
+    cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent;
+    transition:border-color .15s, background .15s, transform .1s;
+  }
+  .lesson:active { transform:scale(0.99); }
+  .lesson .num {
+    flex:0 0 auto; width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:14px; background:#0d0d0d; color:#ffffff;
+  }
+  .lesson .info { flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:3px; }
+  .lesson .name { font-size:15px; font-weight:700; color:#0d0d0d; text-transform:uppercase; letter-spacing:0.01em; }
+  .lesson .meta { font-size:12px; color:#777777; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .badge { font-size:10px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:#dcfce7; color:#15803d; padding:3px 8px; border-radius:999px; }
+  .lock { flex:0 0 auto; width:22px; height:22px; }
+
+  .lesson.open:hover { border-color:#e8871e; }
+  .lesson.active { border-color:#e8871e; background:#fff7ee; }
+  .lesson.active .num { background:#e8871e; }
+
+  .lesson.locked { background:#f5f5f5; }
+  .lesson.locked .num { background:#c9c9c9; }
+  .lesson.locked .name { color:#8a8a8a; }
+  .lesson.locked .meta { color:#a0a0a0; }
+  .lesson.locked .lock { opacity:0.55; }
+
+  /* ---------- BOTÃO ---------- */
+  .cta-wrap { width:100%; max-width:600px; margin-top:14px; }
+  .btn {
+    display:block; width:100%; text-align:center;
+    font-size:14px; font-weight:700; letter-spacing:0.02em; text-transform:uppercase;
+    padding:17px 20px; border-radius:8px; color:#ffffff; background:#22c55e;
+  }
+  .btn.pulse { animation:pulse .9s ease-out 2; }
+  @keyframes pulse {
+    0%   { box-shadow:0 0 0 0 rgba(34,197,94,.55); }
+    100% { box-shadow:0 0 0 18px rgba(34,197,94,0); }
+  }
+
+  .bar { height:10px; width:100%; background:#1e3a5f; }
+
+  @media (max-width:480px) {
+    .hero { padding:20px 12px; }
+    .aulas { padding:32px 16px 44px; }
+    .lesson { padding:14px; gap:12px; }
+    .lesson .name { font-size:14px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO (PRETO): SÓ O PLAYER ===================== -->
+  <section class="hero">
+    <div class="player-wrap" id="player-wrap">
+      <iframe
+        id="player"
+        src="https://www.youtube.com/embed/OJt40sqzydA?rel=0"
+        title="Aula 1 - Plano"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- ===================== AULAS (BRANCO) ===================== -->
+  <section class="aulas">
+    <div class="aulas-inner">
+
+      <h2 class="headf aulas-title">Aulas do treinamento</h2>
+
+      <!-- AULAS LIBERADAS: 1 e 2 (só estas têm vídeo no código) -->
+      <div class="lesson open active" role="button" tabindex="0" data-video="OJt40sqzydA" data-title="Aula 1 - Plano">
+        <div class="num">1</div>
+        <div class="info">
+          <span class="name">Plano</span>
+          <span class="meta"><span class="badge">Aula experimental</span> 5:14</span>
+        </div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>
+      </div>
+
+      <div class="lesson open" role="button" tabindex="0" data-video="Iv7k3iOM2JM" data-title="Aula 2 - Estratégia">
+        <div class="num">2</div>
+        <div class="info">
+          <span class="name">Estratégia</span>
+          <span class="meta"><span class="badge">Aula experimental</span> 5:49</span>
+        </div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>
+      </div>
+
+      <div class="lesson open" role="button" tabindex="0" data-video="2DUIQQBlVXk" data-title="Aula 3 - Cronograma">
+        <div class="num">3</div>
+        <div class="info">
+          <span class="name">Cronograma</span>
+          <span class="meta"><span class="badge">Aula experimental</span> 1:54</span>
+        </div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>
+      </div>
+
+      <!-- AULAS BLOQUEADAS: 4 a 9 (sem vídeo no código) -->
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">4</div>
+        <div class="info"><span class="name">Feed</span><span class="meta">2:12</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">5</div>
+        <div class="info"><span class="name">Anúncios</span><span class="meta">4:26</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">6</div>
+        <div class="info"><span class="name">Resgate</span><span class="meta">1:54</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">7</div>
+        <div class="info"><span class="name">Indicação</span><span class="meta">0:45</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">8</div>
+        <div class="info"><span class="name">Desafio</span><span class="meta">2:53</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+      <div class="lesson locked" role="button" tabindex="0">
+        <div class="num">9</div>
+        <div class="info"><span class="name">Black Friday</span><span class="meta">2:34</span></div>
+        <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      </div>
+
+    </div>
+
+    <div class="cta-wrap">
+      <a id="cta" class="btn" href="https://pay.hub.la/7ozvFILRkgSbdO9wPzdI">Desbloquear todas as aulas</a>
+    </div>
+  </section>
+
+  <div class="bar"></div>
+
+<script>
+  (function () {
+    var player = document.getElementById('player');
+    var playerWrap = document.getElementById('player-wrap');
+    var cta = document.getElementById('cta');
+    var lessons = document.querySelectorAll('.lesson');
+
+    function playLesson(el) {
+      var id = el.getAttribute('data-video');
+      player.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      player.title = el.getAttribute('data-title') || 'Aula';
+      for (var i = 0; i < lessons.length; i++) lessons[i].classList.remove('active');
+      el.classList.add('active');
+      playerWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function pointToCta() {
+      cta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      cta.classList.remove('pulse');
+      void cta.offsetWidth;
+      cta.classList.add('pulse');
+    }
+
+    function handle(el) {
+      if (el.classList.contains('open')) playLesson(el);
+      else pointToCta();
+    }
+
+    for (var i = 0; i < lessons.length; i++) {
+      (function (el) {
+        el.addEventListener('click', function () { handle(el); });
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handle(el); }
+        });
+      })(lessons[i]);
+    }
+  })();
+</script>
+
+</body>
+</html>
